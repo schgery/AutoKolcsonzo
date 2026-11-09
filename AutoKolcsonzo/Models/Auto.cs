@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,11 +18,12 @@ namespace AutokolcsonzoLibrary.Models
         public Kategoria Kategoria { get; set; }
         public int Evjarat { get; set; }
         public int NapiDij { get; set; }
-        public List<Berles> Berlesek { get; set; }
-        public bool Szabad()
+        public List<Berles> Berlesek { get; set; } = new List<Berles>();
+        
+        [NotMapped]
+        public bool Szabad
         {
-            return Berlesek.All(b => b.Visszahozva != null);
+            get { return Berlesek.All(b => b.Visszahozva != null); }
         }
-
     }
 }

@@ -1,0 +1,15 @@
+﻿@model List<Ugyfel>
+@{
+    ViewData["Title"] = "ugyfelek";
+}
+
+
+<table class="table">
+    @foreach (Ugyfel a in Model)
+    {
+        <tr>
+            <td>@a.Nev</td>
+            <td>@a.Email</td>
+        </tr>
+    }
+</table>

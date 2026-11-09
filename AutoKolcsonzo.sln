@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22 d17.14
+VisualStudioVersion = 17.14.36414.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutokolcsonzoLibrary", "AutoKolcsonzo\AutokolcsonzoLibrary.csproj", "{D07C5133-5953-4188-B91F-8F0954E76BA9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutokolcsonzoConsole", "AutokolcsonzoConsole\AutokolcsonzoConsole.csproj", "{5DD4874C-6D26-4C6F-9401-888BA94800FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutokolcsonzoWEB", "AutokolcsonzoWEB\AutokolcsonzoWEB.csproj", "{E2600ED1-E1E0-4DF0-97F9-8C68BCE6729E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{5DD4874C-6D26-4C6F-9401-888BA94800FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5DD4874C-6D26-4C6F-9401-888BA94800FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5DD4874C-6D26-4C6F-9401-888BA94800FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E2600ED1-E1E0-4DF0-97F9-8C68BCE6729E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2600ED1-E1E0-4DF0-97F9-8C68BCE6729E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2600ED1-E1E0-4DF0-97F9-8C68BCE6729E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2600ED1-E1E0-4DF0-97F9-8C68BCE6729E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

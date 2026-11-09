@@ -23,7 +23,7 @@ namespace AutokolcsonzoLibrary.Services
 
         public List<Auto> Autok()
         {
-            return c.autok.OrderBy(x=>x.Rendszam).Include(a => a.Gyarto).Include(a => a.Kategoria).ToList();
+            return c.autok.OrderBy(x=>x.Rendszam).Include(a => a.Berlesek).Include(a => a.Gyarto).Include(a => a.Kategoria).ToList();
         }
 
         public List<(string Kategoria, int Darab)> KategoriaStatisztika()
@@ -33,12 +33,16 @@ namespace AutokolcsonzoLibrary.Services
 
         public List<Berles> Kesesek(DateOnly datum)
         {
-            throw new NotImplementedException();
+            return c.berlesek
+                .Where(b => b.Visszahozva == null && b.Hatarido < datum)
+                .Include(b => b.Auto)
+                .Include(b => b.Ugyfel)
+                .ToList();
         }
 
         public List<Auto> SzabadAutok()
         {
-            return c.autok.Where(a=>a.Szabad()==true).ToList();
+            return Autok().Where(x=>x.Szabad).ToList();
         }
 
         public List<Ugyfel> Ugyfelek()
@@ -48,7 +52,16 @@ namespace AutokolcsonzoLibrary.Services
 
         public bool UjBerles(int autoId, int ugyfelId, DateOnly kezdet, int napok)
         {
-            throw new NotImplementedException();
+            Berles b = new Berles() {
+            AutoId = autoId,
+            UgyfelId = ugyfelId,
+            Kezdete = kezdet,
+            Hatarido = kezdet.AddDays(napok)
+            };
+            c.berlesek.Add(b);
+            c.SaveChanges();
+            return true;
+
         }
 
         public bool UjUgyfel(string nev, string email)

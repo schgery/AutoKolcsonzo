@@ -62,14 +62,21 @@ public class Menu
         // Az autók listája minden alapadatával (rendszám, gyártó, modell, kategória, évjárat, napidíj)
         foreach (var item in service.Autok())
         {
-            Console.WriteLine($"{item.Gyarto.Nev} {item.Modell}");
+            Console.WriteLine($"{item.Berlesek.Count()} {item.Rendszam} {item.Gyarto.Nev} {item.Modell} {item.Kategoria.Nev} {item.Evjarat} {item.NapiDij}");
+            foreach (var item1 in item.Berlesek)
+            {
+                Console.WriteLine($"{item1.Visszahozva}");
+            }
         }
 
     }
 
     private void SzabadAutok()
     {
-
+        foreach (var item in service.SzabadAutok())
+        {
+            Console.WriteLine($"{item.Rendszam} {item.Gyarto.Nev} {item.Modell} {item.Kategoria.Nev} {item.Evjarat} {item.NapiDij}");
+        }
 
     }
 

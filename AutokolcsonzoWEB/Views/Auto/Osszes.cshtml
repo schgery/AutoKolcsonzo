@@ -1,0 +1,15 @@
+﻿@model List<Auto>
+@{
+    ViewData["Title"] = "autok";
+}
+
+
+<table class="table">
+    @foreach (Auto a in Model)
+    {
+        <tr>
+            <td>@a.Gyarto.Nev</td>
+            <td>@a.Modell</td>
+        </tr>
+    }
+</table>
