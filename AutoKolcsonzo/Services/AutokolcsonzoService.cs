@@ -49,7 +49,14 @@ namespace AutokolcsonzoLibrary.Services
         {
             return c.ugyfelek.OrderBy(u=>u.Nev).ToList();
         }
-
+        public List<Gyarto> Gyartok()
+        {
+            return c.gyartok.ToList();
+        }
+        public List<Kategoria> Kategoriak()
+        {
+            return c.kategoriak.ToList();
+        }
         public bool UjBerles(int autoId, int ugyfelId, DateOnly kezdet, int napok)
         {
             Berles b = new Berles() {
@@ -64,14 +71,13 @@ namespace AutokolcsonzoLibrary.Services
 
         }
 
-        public bool UjUgyfel(string nev, string email)
+        public bool UjUgyfel(Ugyfel ugy)
         {
-            if (c.ugyfelek.Any(u => u.Email == email) && !email.Contains("@"))
+            if (c.ugyfelek.Any(u => u.Email == ugy.Email) && !ugy.Email.Contains("@"))
             {
                 return false;
-            }  
-            Ugyfel u = new Ugyfel() { Nev = nev, Email = email};
-            c.ugyfelek.Add(u);
+            }
+            c.ugyfelek.Add(ugy);
             c.SaveChanges();
             return true;
         }
@@ -84,6 +90,20 @@ namespace AutokolcsonzoLibrary.Services
                 return false;
             }
             b.Visszahozva = datum;
+            return true;
+        }
+
+        public bool UjGyarto(Gyarto gy)
+        {
+            c.gyartok.Add(gy);
+            c.SaveChanges();
+            return true;
+        }
+
+        public bool UjKategoria(Kategoria kat)
+        {
+            c.kategoriak.Add(kat);
+            c.SaveChanges();
             return true;
         }
     }

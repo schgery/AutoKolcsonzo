@@ -1,4 +1,5 @@
-﻿using AutokolcsonzoLibrary.Services;
+﻿using AutokolcsonzoLibrary.Models;
+using AutokolcsonzoLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.Net.Sockets;
 using System.Security.Cryptography.Xml;
@@ -11,7 +12,7 @@ namespace AutokolcsonzoWEB.Controllers
 
         public AutoController(IAutokolcsonzoService service)
         {
-            s = service; 
+            s = service;
         }
         public IActionResult Index()
         {
@@ -25,6 +26,39 @@ namespace AutokolcsonzoWEB.Controllers
         {
             return View(s.SzabadAutok());
         }
-
+        public IActionResult Ujgyarto()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Ujgyarto(Gyarto gy)
+        {
+            if (ModelState.IsValid)
+            {
+                s.UjGyarto(gy);
+            }
+            return RedirectToAction("gyartok");
+        }
+        public IActionResult Gyartok()
+        {
+            return View(s.Gyartok());
+        }
+        public IActionResult Kategoriak()
+        {
+            return View(s.Kategoriak());
+        }
+        public IActionResult Ujkategoria()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Ujkategoria(Kategoria kat)
+        {
+            if (ModelState.IsValid)
+            {
+                s.UjKategoria(kat);
+            }
+            return RedirectToAction("kategoriak");
+        }
     }
 }

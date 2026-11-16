@@ -1,0 +1,9 @@
+﻿@model List<Kategoria>
+<table class="table">
+    @foreach (Kategoria k in Model)
+    {
+        <tr>
+            <td>@k.Nev</td>
+        </tr>
+    }
+</table>

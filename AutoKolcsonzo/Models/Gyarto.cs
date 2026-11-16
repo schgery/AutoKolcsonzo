@@ -11,6 +11,6 @@ namespace AutokolcsonzoLibrary.Models
         public int Id { get; set; }
         public string Nev { get; set; } = "";
 
-        public List<Auto> Autok { get; set; }
+        public List<Auto> Autok { get; set; } = new List<Auto>();
     }
 }

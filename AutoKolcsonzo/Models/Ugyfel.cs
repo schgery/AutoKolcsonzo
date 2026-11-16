@@ -12,6 +12,6 @@ namespace AutokolcsonzoLibrary.Models
         public string Nev { get; set; } = "";
         public string Email { get; set; } = "";
         public bool Aktiv { get; set; } = true;
-        public List<Berles> Berlesek { get; set; }
+        public List<Berles> Berlesek { get; set; } = new List<Berles>();
     }
 }

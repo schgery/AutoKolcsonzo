@@ -1,4 +1,5 @@
-﻿using AutokolcsonzoLibrary.Services;
+﻿using AutokolcsonzoLibrary.Models;
+using AutokolcsonzoLibrary.Services;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AutokolcsonzoWEB.Controllers
@@ -12,13 +13,34 @@ namespace AutokolcsonzoWEB.Controllers
         {
             s = service;
         }
+
         public IActionResult Index()
         {
             return View();
         }
+
         public IActionResult Osszes()
         {
             return View(s.Ugyfelek());
+        }
+
+        public IActionResult Uj()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Uj(Ugyfel u)
+        {
+            if (ModelState.IsValid)
+            {
+                if (s.UjUgyfel(u))
+                {
+                    return RedirectToAction("Osszes");
+                }
+            }
+
+            return View(u);
         }
     }
 }

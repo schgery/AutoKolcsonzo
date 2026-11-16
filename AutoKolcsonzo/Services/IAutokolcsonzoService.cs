@@ -10,11 +10,14 @@ public interface IAutokolcsonzoService
     List<Ugyfel> Ugyfelek();
 	
     //Az ügyfél egyedi email címmel rendelkezik!
-    bool UjUgyfel(string nev, string email);
+    bool UjUgyfel(Ugyfel ugy);
+    public List<Gyarto> Gyartok();
+    public List<Kategoria> Kategoriak();
 
     //ÁTÍRHATÓ: autó és ügyfél objektumokra
     bool UjBerles(int autoId, int ugyfelId, DateOnly kezdet, int napok);
-
+    bool UjGyarto(Gyarto gy);
+    bool UjKategoria(Kategoria kat);
     bool Visszahozatal(int berlesId, DateOnly datum);
 
     List<Berles> AktivBerlesek();
